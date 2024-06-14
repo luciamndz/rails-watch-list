@@ -1,18 +1,18 @@
 class ListsController < ApplicationController
 
-  def index
+  def index #SEE aALL movie list
     @lists = List.all
   end
 
-  def show
+  def show #see DETAILS of a movie list
     @list = List.find(params[:id])
   end
 
-  def new
+  def new #empty form to CREATE
     @list = List.new
   end
 
-  def create
+  def create #user input in form to CREATE
     @list = List.new(params_list)
     if @list.save
       redirect_to lists_path
@@ -23,7 +23,7 @@ class ListsController < ApplicationController
 
   private
 
-  def params_list
+  def params_list #security
     params.require(:list).permit(:name)
   end
 end

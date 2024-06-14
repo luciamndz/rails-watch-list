@@ -1,5 +1,16 @@
-<h1>Details of the list</h1>
+<div class="container mt-4" >
+  <h1><%= @list.name %></h1>
 
-<div class="container">
-  <p><%= "#{@list.name}" %></p>
+  <ol>
+    <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie)%>
+      <li><%= movie.title %></li>
+      <%= bookmark.comment %>
+      <%= bookmark.comment %> <%= link_to "Delete", bookmark_path(bookmark),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    <% end %>
+  </ol>
+  <%= link_to "Add Bookmark", new_list_bookmark_path(@list)%>
+  <%= link_to "Go back to lists", lists_path%>
 </div>

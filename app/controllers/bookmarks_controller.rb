@@ -8,7 +8,7 @@ class BookmarksController < ApplicationController
   def create #formulario con info enviada
     @bookmark = Bookmark.new(params_bookmarks)
     @bookmark.list = @list
-    if @bookmark.save
+    if @bookmark.save!
       redirect_to list_path(@list)
     else
       render :new, status: :unprocessable_entity
