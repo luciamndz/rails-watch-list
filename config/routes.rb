@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   # get 'lists/:id', to: 'lists#show', as: :list
 
   # Defines the root path route ("/")
-  # root "lists#index"
+  root "lists#index"
 end

@@ -1,11 +1,10 @@
-<h1>Watch List</h1>
+<%= render "navbar", list: @list %>
+<%= render "banner", list: @list %>
 
 <div class="container mt-4" >
-  <h1>Listas</h1>
   <ul class="list-group">
     <% @lists.each do |list| %>
       <li class="list-group-item"><%= link_to(list.name, list_path(list))%></li>
     <% end %>
   </ul>
-  <%= link_to "New list", new_list_path %>
 </div>
